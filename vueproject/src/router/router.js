@@ -6,6 +6,9 @@
 
 const Home = () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
 const About = () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+const Argu = () => import(/* webpackChunkName: "argu" */ '../views/argu.vue')
+const Parent = () => import(/* webpackChunkName: "parent" */ '../views/parent.vue')
+const Child = () => import(/* webpackChunkName: "child" */ '../views/child.vue')
 let routes = [
   {
     path: '/',
@@ -15,8 +18,17 @@ let routes = [
   {
     path: '/about',
     name: 'about',
-
     component: About
+  }, {
+    path: '/argu/:name',
+    component: Argu
+  }, {
+    path: '/parent',
+    component: Parent,
+    children: [{
+      path: 'child',
+      component: Child    /* http://localhost:8081/#/parent/child */
+    }]
   }
 ]
 export default routes
