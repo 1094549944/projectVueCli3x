@@ -16,12 +16,35 @@ let routes = [
     path: '/',
     alias: '/home_page',
     name: 'home',
-    component: Home
+    component: Home,
+    beforeRouteEnter (to, from, next) {
+      // ...
+      next(vm => {
+        console.log(vm)
+      })
+    },
+    beforeRouteLeave (to, from, next) {
+      // ... 用户离开这个页面，如果要离开这个页面，给一个提示，是否要离开这个页面加一个判断。如果
+
+      /**
+       * const leave = confirm('您确定要离开吗？')
+       * if(leave) next()
+       * else next(false)
+       * 
+       */
+
+      console.log(to.name, from.name)
+
+    }
   },
   {
     path: '/about',
     name: 'about',
-    component: About
+    component: About,
+    meta: {
+      title: '关于',
+
+    }
   }, {
     path: '/argu/:name',
     component: Argu
@@ -55,3 +78,4 @@ let routes = [
   }
 ]
 export default routes
+

@@ -2,7 +2,7 @@
  * @Author: jiaxinying 
  * @Date: 2018-11-05 19:04:22 
  * @Last Modified by: jiaxinying
- * @Last Modified time: 2018-11-05 19:14:23
+ * @Last Modified time: 2018-11-06 17:30:22
  */
 
 /**
@@ -13,24 +13,23 @@
  * 开发环境 '/'
  */
 
-
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/iview-admin' : '/'
-
-// 引入node path 模块,用来加载路径，解决不同系统的文件引入路径
 const path = require('path')
-const resolve = dir => {
-  return path.join(__dirname, dir)
-}
+
+const resolve = dir => path.join(__dirname, dir)
+
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/' : '/'
+
 module.exports = {
+  lintOnSave: false,
   baseUrl: BASE_URL,
   chainWebpack: config => {
-    config.resolve, alias
+    config.resolve.alias
       .set('@', resolve('src'))
       .set('_c', resolve('src/components'))
   },
-  //打包时不生成.map 文件，这样在打包的时候，会减小打包的体积，并加快打包速度
+  // 打包时不生成.map文件
   productionSourceMap: false,
   devServer: {
-    proxy: 'http://localhost:4000'
+    // proxy: 'http://localhost:3000'
   }
 }

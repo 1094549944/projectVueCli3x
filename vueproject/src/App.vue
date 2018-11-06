@@ -4,11 +4,17 @@
       <router-link :to="{name:'home'}">Home</router-link> |
       <router-link :to="{name:'about'}">About</router-link>
     </div>
-    <router-view />
-    <router-view name="tel" />
-    <router-view name="email" />
+    <transition-group name="router">
+      <router-view key="default" />
+      <router-view key="tel"
+                   name="tel" />
+      <router-view key="email"
+                   name="email" />
+    </transition-group>
   </div>
 </template>
+
+
 <style lang="stylus">
 #app
   font-family 'Avenir', Helvetica, Arial, sans-serif
@@ -26,4 +32,22 @@
 
     &.router-link-exact-active
       color #42b983
+
+.router-enter
+  opacity 0
+
+.router-enter-active
+  transition 1s opacity ease
+
+.router-enter-to
+  opacity 1
+
+.router-leave
+  opacity 1
+
+.router-leave-active
+  transition 1s opacity ease
+
+.router-leave-to
+  opacity 0
 </style>
