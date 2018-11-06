@@ -5,6 +5,8 @@
       <router-link :to="{name:'about'}">About</router-link>
     </div>
     <router-view />
+    <router-view name="tel" />
+    <router-view name="email" />
   </div>
 </template>
 <style lang="stylus">
