@@ -11,6 +11,8 @@ const Parent = () => import(/* webpackChunkName: "parent" */ '../views/parent.vu
 const Child = () => import(/* webpackChunkName: "child" */ '../views/child.vue')
 const Email = () => import(/* webpackChunkName: "email" */ '../views/email.vue')
 const Tel = () => import(/* webpackChunkName: "tel" */ '../views/tel.vue')
+
+const Store =()=>import(/* webpackChunkName: "store" */ '../views/store.vue')
 let routes = [
   {
     path: '/',
@@ -75,6 +77,10 @@ let routes = [
         name: 'home'
       }
     }
+  },{
+    path:'/store',
+    name:'store',
+    component:Store
   }
 ]
 export default routes
